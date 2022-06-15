@@ -1,0 +1,45 @@
+.outgoing-container {
+  background-color: #444;
+  padding: 15px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  color: whitesmoke;
+  border-radius: 5px;
+  margin: 0 15px 15px;
+}
+
+.outgoing-title {
+  font-family: "Noto Sans", sans-serif;
+  color: whitesmoke;
+  justify-self: flex-start;
+  font-size: 17px;
+  letter-spacing: 2px;
+}
+
+.outgoing-p {
+  font-size: 1rem;
+  align-self: center;
+  justify-self: center;
+}
+
+.trash {
+  align-self: center;
+  justify-self: flex-end;
+  cursor: pointer;
+  transform: scale(1.5);
+}
+
+.outgoing-span {
+  align-self: center;
+  justify-self: center;
+}
+
+.outgoing-income {
+  transform: scale(1.5);
+  color: lightgreen;
+}
+
+.outgoing-outcome {
+  transform: scale(1.5);
+  color: lightcoral;
+}

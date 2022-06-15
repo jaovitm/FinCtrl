@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@1,100&display=swap');
+
+
+.resume{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 12px;
+    background-color: #333;
+    color: whitesmoke;
+    height: max-content;
+    width: 25vw;
+    margin-top: -5vh;
+    border: 3px solid chartreuse;
+    z-index: 10;
+}
+
+.resume .resumeTitle{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+    font-size: 1vw;
+}
+.amount{
+    display: flex;
+    justify-content: center;
+    margin:0 0 10px 0;
+    font-size: 1vw;
+}
+
+.icon{
+    transform: scale(2.5);
+}

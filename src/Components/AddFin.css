@@ -1,0 +1,46 @@
+.AddContainer{
+    margin: 30px 0;
+    background-color: #444;
+    width: 100%;
+    height: auto;
+    padding: 2vw;
+    border-radius: 15px;
+}
+
+#Add-description, #Add-amount{
+    min-width: auto;
+    min-height: fit-content;
+    width: 20vw;
+    height: 2vw;
+    margin: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    
+}
+label {
+    color: aliceblue;
+}
+input::placeholder{
+    color: #444;
+}
+
+input[type=radio]{
+    margin: 10px;
+}
+
+input[type=radio] label{
+    position: inherit;;
+}
+
+
+button{
+    min-width: max-content;
+    min-height: fit-content;
+    width: 10vw;
+    height: 6vh;
+    background-color: chartreuse;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
