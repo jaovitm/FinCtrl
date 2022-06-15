@@ -20,7 +20,7 @@ function App() {
   const [outgoing, setOutgoing] = useState([
     {
       id: "1",
-      name: "Aluguel",
+      name: "Salário",
       valor: "1000",
       income: true,
     },
