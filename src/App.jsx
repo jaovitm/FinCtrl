@@ -12,68 +12,85 @@ import {
   FiDollarSign,
 } from "react-icons/fi";
 
+
 let Entry = 1000;
 let Out = 500;
 let Total = 500;
 
 function App() {
-  const [outgoing, setOutgoing] = useState([
-    {
-      id: "1",
-      name: "Salário",
-      valor: "1000",
-      income: true,
-    },
-    {
-      id: "2",
-      name: "Casa",
-      valor: "1000",
-      valor: "500",
-      income: false,
-    },
-  ]);
+  const [outgoings, setOutgoing] = useState(
+    JSON.parse(sessionStorage.getItem("out"))
+  );
+  const [entrygoing, setEntry] = useState(
+    JSON.parse(sessionStorage.getItem("entry"))
+  );
 
   const HandleFinAdd = (name, value, income) => {
-    const newOut = [
-      ...outgoing,
-      {
-        id: uuidv4(),
-        name: name,
-        valor: value,
-        income: income == "in" ? true : false,
-        income: income == "in" ? true : false,
-      },
-    ];
+    let entrygoing = [];
+    let outgoing = [];
 
-    setOutgoing(newOut);
+    entrygoing = JSON.parse(sessionStorage.getItem("entry"));
+    outgoing = JSON.parse(sessionStorage.getItem("out"));
+
+    if (income === "in") {
+      const newentry = [
+        ...entrygoing,
+        {
+          id: uuidv4(),
+          name: name,
+          Value: value,
+          income: true,
+        },
+      ];
+
+      sessionStorage.setItem("entry", JSON.stringify(newentry));
+      setEntry(JSON.parse(sessionStorage.getItem("entry")));
+    } else {
+      const newOut = [
+        ...outgoing,
+        {
+          id: uuidv4(),
+          name: name,
+          Value: value,
+          income: false,
+        },
+      ];
+
+      sessionStorage.setItem("out", JSON.stringify(newOut));
+      setOutgoing(JSON.parse(sessionStorage.getItem("out")));
+    }
+
+    const out = JSON.parse(sessionStorage.getItem("out"));
+    sumOut(out);
+    const entry = JSON.parse(sessionStorage.getItem("entry"));
+    sumEntry(entry);
   };
 
   const HandleFinDelete = (id, name) => {
-    const newOutgoings = outgoing.filter((element) => element.id !== id);
-
-    setOutgoing(newOutgoings);
 
     const sessionOutgoings = JSON.parse(sessionStorage.getItem("out"));
     const sessioningoings = JSON.parse(sessionStorage.getItem("entry"));
 
     const newsessionOut = sessionOutgoings.filter(
-      (element) => element.Desc !== name
+      (element) => element.id !== id
     );
     const newsessionIn = sessioningoings.filter(
-      (element) => element.Desc !== name
+      (element) => element.id !== id
     );
 
     sessionStorage.clear();
     sessionStorage.setItem("entry", JSON.stringify(newsessionIn));
     sessionStorage.setItem("out", JSON.stringify(newsessionOut));
 
+    setEntry(JSON.parse(sessionStorage.getItem("entry")));
+    setOutgoing(JSON.parse(sessionStorage.getItem("out")));
+
     sumEntry(JSON.parse(sessionStorage.getItem("entry")));
     sumOut(JSON.parse(sessionStorage.getItem("out")));
-
   };
 
   const sumEntry = (entry) => {
-    if (entry.length == 0) {
+    if (entry.length === 0) {
       Entry = 0;
     } else {
       const inValues = entry.map((item) => Number(item.Value));
@@ -86,7 +103,7 @@ function App() {
   };
 
   const sumOut = (out) => {
-    if (out.length == 0) {
+    if (out.length === 0) {
       Out = 0;
     } else {
       const outValues = out.map((item) => Number(item.Value));
@@ -98,8 +115,8 @@ function App() {
   };
 
   const initialStorage = () => {
-    const initialentry = { Desc: "Aluguel", Value: 1000 };
-    const initialout = { Desc: "Casa", Value: 500 };
+    const initialentry = { name: "Salario", Value: 1000, income: true };
+    const initialout = { name: "Aluguel", Value: 500, income: false };
 
     if (sessionStorage.getItem("entry") === null) {
       sessionStorage.setItem("entry", JSON.stringify([initialentry]));
@@ -126,13 +143,15 @@ function App() {
     }
   };
 
-
-
   if (
     sessionStorage.getItem("entry") === null &&
     sessionStorage.getItem("out") === null
   ) {
     Window.onload = initialStorage();
+  }
+  else{
+    sumEntry(JSON.parse(sessionStorage.getItem("entry")));
+    sumOut(JSON.parse(sessionStorage.getItem("out")));
   }
 
   return (
@@ -158,8 +177,6 @@ function App() {
         </div>
         <Add
           HandleFinAdd={HandleFinAdd}
-          sumEntry={sumEntry}
-          sumOut={sumOut}
         ></Add>
         <div className="view">
           <div className="viewchart">
@@ -168,7 +185,8 @@ function App() {
 
           <div className="viewoutgoing">
             <Outgoings
-              outgoing={outgoing}
+              entrygoing={entrygoing}
+              outgoing={outgoings}
               HandleFinDelete={HandleFinDelete}
             ></Outgoings>
           </div>

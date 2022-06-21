@@ -7,7 +7,7 @@ const Outgoing = ({ outgoing, HandleFinDelete }) => {
   return (
     <div className="outgoing-container">
       <h1 className="outgoing-title">{outgoing.name}</h1>
-      <p className="outgoing-p">{outgoing.valor}</p>
+      <p className="outgoing-p">{outgoing.Value}</p>
       <span className="outgoing-span">
         {outgoing.income ? (
           <FiArrowUpCircle className="outgoing-income" />

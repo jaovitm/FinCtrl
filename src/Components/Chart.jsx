@@ -18,7 +18,6 @@ const Charts = () => {
 
   return (
     <>
-      <div className="chart-container"></div>
       <Chart chartType="PieChart" data={data} options={options} />
     </>
   );

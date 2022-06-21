@@ -20,19 +20,52 @@
     grid-template-columns: 1fr 1fr;
 }
 
-.view-outgoing{
+.viewoutgoing{
     height: 35vh;
     overflow-y: auto;
 }
 
-.view-outgoing::-webkit-scrollbar {
+.viewoutgoing::-webkit-scrollbar {
   width: 15px;              
 }
 
-.view-outgoing::-webkit-scrollbar-track {
+.viewoutgoing::-webkit-scrollbar-track {
   background: whitesmoke;        
 }
 
-.view-outgoing::-webkit-scrollbar-thumb {
+.viewoutgoing::-webkit-scrollbar-thumb {
   background-color: chartreuse; 
 }    
+
+/*phones */
+@media only screen and (max-width: 600px) {
+  .resumecontainer{
+    display: inline-block;
+}
+.view{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+}
+
+/*tablets and large phones*/
+@media only screen and (min-width: 600px) {
+
+}
+
+/* tablets */
+@media only screen and (min-width: 768px) {
+
+}
+
+/*desktops*/
+@media only screen and (min-width: 992px) {
+
+}
+
+/*Large desktops*/
+@media only screen and (min-width: 1200px) {
+
+}

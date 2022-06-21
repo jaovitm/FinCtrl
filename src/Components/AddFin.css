@@ -29,11 +29,6 @@ input[type=radio]{
     margin: 10px;
 }
 
-input[type=radio] label{
-    position: inherit;;
-}
-
-
 button{
     min-width: max-content;
     min-height: fit-content;
@@ -43,4 +38,33 @@ button{
     border: none;
     border-radius: 15px;
     cursor: pointer;
+}
+
+.radio{
+    display: initial;
+}
+
+@media only screen and (max-width: 600px) {
+    .AddContainer{
+    display: grid;
+    grid-template-columns: auto;
+}
+#Add-description, #Add-amount{
+    min-width: auto;
+    min-height: fit-content;
+    width: 90%;
+    height: 30px;    
+}
+label {
+    font-size: 1rem;
+    color: aliceblue;
+}
+button{
+    width: 95%;
+    height: 50px;
+}
+.radio{
+    display: block;
+}
+
 }
