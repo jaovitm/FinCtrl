@@ -30,15 +30,14 @@ Projeto de um site que ajuda e gerencia suas finanças pessoais
 
 - Preview em tempo real
 - Fácil usabilidade
-- Salvamento de Valores em cache
+- Salvamento de dados em cache de sessão
+- Preview Gráfico 
+- Responsivo
 
 ## Melhorias
 
-- Responsividade
 - Temas Dark/Light
-- Preview grafico 
 - Criação de Contas
-- Salvar entradas/saidas em cache
 
 ## Stack utilizada
 
