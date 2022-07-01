@@ -4,11 +4,19 @@ import Outgoing from "./Outgoing";
 const Outgoings = ({ outgoing, HandleFinDelete, entrygoing }) => {
   return (
     <>
-        {entrygoing.map((entrygoing) => (
-          <Outgoing outgoing={entrygoing} HandleFinDelete={HandleFinDelete} />
-        ))}
+      {entrygoing.map((entrygoing) => (
+        <Outgoing
+          key={entrygoing.id}
+          outgoing={entrygoing}
+          HandleFinDelete={HandleFinDelete}
+        />
+      ))}
       {outgoing.map((outgoing) => (
-        <Outgoing outgoing={outgoing} HandleFinDelete={HandleFinDelete} />
+        <Outgoing
+          key={outgoing.id}
+          outgoing={outgoing}
+          HandleFinDelete={HandleFinDelete}
+        />
       ))}
     </>
   );

@@ -2,18 +2,15 @@ import React from "react";
 import { Chart } from "react-google-charts";
 import "./Chart.css";
 
-const Charts = () => {
+const Charts = ({ Entry, Out }) => {
   const data = [
     ["Task", "Hours per Day"],
-    ["Work", 11],
-    ["Eat", 2],
-    ["Commute", 2],
-    ["Watch TV", 2],
-    ["Sleep", 7],
+    ["Entradas", Entry],
+    ["Saidas", Out],
   ];
 
   const options = {
-    title: "My Daily Activities",
+    title: "Relação Entradas e Saidas",
   };
 
   return (

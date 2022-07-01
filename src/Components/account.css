@@ -1,0 +1,19 @@
+#account-container {
+  position: absolute ;
+  right: 1rem;
+  top: 1rem;
+  background-color: whitesmoke;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.account-img {
+    width: 3rem;
+    height: 3rem;
+    color: black;
+    
+    position: relative;
+    left: calc(50% - 1.5rem) ;
+    top: calc(50% - 1.6rem);
+}

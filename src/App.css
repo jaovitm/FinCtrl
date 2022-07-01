@@ -49,23 +49,3 @@
     gap: 15px;
 }
 }
-
-/*tablets and large phones*/
-@media only screen and (min-width: 600px) {
-
-}
-
-/* tablets */
-@media only screen and (min-width: 768px) {
-
-}
-
-/*desktops*/
-@media only screen and (min-width: 992px) {
-
-}
-
-/*Large desktops*/
-@media only screen and (min-width: 1200px) {
-
-}

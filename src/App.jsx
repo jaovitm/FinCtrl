@@ -1,23 +1,45 @@
 import React, { useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
 import Header from "./Components/Header";
 import ResumeItens from "./Components/ResumeItens";
 import Add from "./Components/AddFin";
 import Charts from "./Components/Chart";
 import Outgoings from "./Components/Outgoings";
+import AccountPage from "./Components/AccountPage";
 import { v4 as uuidv4 } from "uuid";
 import {
   FiArrowUpCircle,
   FiArrowDownCircle,
   FiDollarSign,
 } from "react-icons/fi";
+;
 
 
 let Entry = 1000;
 let Out = 500;
 let Total = 500;
 
+//  fetch(process.env.REACT_APP_API_URL || "http://localhost:3001/acess", {
+//    method: "POST",
+//    headers: { "Content-Type": "application/json" },
+//    body: JSON.stringify({ user: "Admin", password: 123456 }),
+//  })
+//    .then((data) => data.json())
+//    .then((data) => console.log(data));
+
+//    fetch(process.env.REACT_APP_API_URL || "http://localhost:3001/create", {
+//      method: "POST",
+//      headers: { "Content-Type": "application/json" },
+//      body: JSON.stringify({ user: "Admin", password: 123456 }),
+//    })
+//      .then((data) => data.json())
+//      .then((data) => console.log(data));
+
 function App() {
+
+
+
   const [outgoings, setOutgoing] = useState(
     JSON.parse(sessionStorage.getItem("out"))
   );
@@ -156,42 +178,60 @@ function App() {
 
   return (
     <>
-      <Header></Header>
-      <div className="container">
-        <div className="resumecontainer">
-          <ResumeItens
-            title={"Entradas"}
-            Icon={FiArrowUpCircle}
-            amount={`R$ ${Entry}`}
-          ></ResumeItens>
-          <ResumeItens
-            title={"Saídas"}
-            Icon={FiArrowDownCircle}
-            amount={`R$ ${Out}`}
-          ></ResumeItens>
-          <ResumeItens
-            title={"Total"}
-            Icon={FiDollarSign}
-            amount={`R$ ${Total}`}
-          ></ResumeItens>
-        </div>
-        <Add
-          HandleFinAdd={HandleFinAdd}
-        ></Add>
-        <div className="view">
-          <div className="viewchart">
-            <Charts></Charts>
-          </div>
+      <Routes>
+        <Route
+          exact
+          path="/"
+          element={
+            <>
+              <Header></Header>
+              <div className="container">
+                <div className="resumecontainer">
+                  <ResumeItens
+                    title={"Entradas"}
+                    Icon={FiArrowUpCircle}
+                    amount={`R$ ${Entry}`}
+                  ></ResumeItens>
+                  <ResumeItens
+                    title={"Saídas"}
+                    Icon={FiArrowDownCircle}
+                    amount={`R$ ${Out}`}
+                  ></ResumeItens>
+                  <ResumeItens
+                    title={"Total"}
+                    Icon={FiDollarSign}
+                    amount={`R$ ${Total}`}
+                  ></ResumeItens>
+                </div>
+                <Add HandleFinAdd={HandleFinAdd}></Add>
+                <div className="view">
+                  <div className="viewchart">
+                    <Charts Entry={Entry} Out={Out}></Charts>
+                  </div>
 
-          <div className="viewoutgoing">
-            <Outgoings
-              entrygoing={entrygoing}
-              outgoing={outgoings}
-              HandleFinDelete={HandleFinDelete}
-            ></Outgoings>
-          </div>
-        </div>
-      </div>
+                  <div className="viewoutgoing">
+                    <Outgoings
+                      entrygoing={entrygoing}
+                      outgoing={outgoings}
+                      HandleFinDelete={HandleFinDelete}
+                    ></Outgoings>
+                  </div>
+                </div>
+              </div>
+            </>
+          }
+        />
+
+        <Route
+          exact
+          path="/Account"
+          element={
+            <>
+              <AccountPage />
+            </>
+          }
+        />
+      </Routes>
     </>
   );
 }
